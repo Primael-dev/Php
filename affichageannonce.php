@@ -7,33 +7,62 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 </head>
 <>
-    
+<body>
 <?php
 include('header.php');
+require_once 'includes/vericonnect.php';
+$req=$bdd->prepare("SELECT * FROM annonces");
+$req->execute();
+$query = $req->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="p-4 sm:ml-64">
-   <div class="p-4   rounded-lg  mt-14">
-      
+        <div class="p-4   rounded-lg  mt-14">
 
-<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
-    <a href="#">
-        <img class="rounded-t-lg" style="width:100%;" src="asset/village.webp" alt="" />
-    </a>
-    <div class="p-5">
-        <a href="#">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        </a>
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-        
-        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Supprimer</button>
 
-        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Modifier</button>
-        </a>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                        <th scope="col" class="px-6 py-3">Image</th>
+          <th scope="col" class="px-6 py-3">Titre</th>
+          <th scope="col" class="px-6 py-3">Description</th>
+          <th scope="col" class="px-6 py-3 text-center">Actions</th>
+          <th scope="col" class="px-6 py-3 text-center"></th>
+
+                            </th>
+                        
+                    </thead>
+                    <tbody>
+                    <?php foreach ($query as $row) { ?>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <img src="./includes/uploads/<?php echo $row['image']; ?>" alt="Annonce" class="w-16 h-16 object-cover rounded">
+                            </td>
+                            <td class="px-6 py-4">
+                                <?php echo $row['titre']; ?>
+                            </td>
+                            <td class="px-6 py-4">
+                                <?php echo $row['description']; ?>
+                            </td>
+                            
+                            <td class="px-6 py-4">
+                                <a href="updateannonce.php?id=<?php echo $row['id']; ?>" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            </td>
+                            <td class="px-6 py-4">
+                                <a href="includes/deleteannonce.php?id=<?php echo $row['id']; ?>" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+        </div>
     </div>
-</div>
-
-   </div>
+    </div>
    </body>
    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </html>

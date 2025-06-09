@@ -18,7 +18,7 @@
             <div class="p-6 rounded-lg mt-14 bg-gray-600 shadow-md max-w-4xl  mx-auto">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Ajouter une annonce</h2>
 
-                <form class="space-y-6" action="#" method="POST" enctype="multipart/form-data">
+                <form class="space-y-6" action="./includes/ajouterannonce.php" method="POST" enctype="multipart/form-data">
 
                     <div>
                         <label for="titre" class="block text-sm font-medium text-gray-700 mb-1">Titre</label>

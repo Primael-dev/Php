@@ -7,7 +7,7 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
 </head>
-<>
+<body>
 
     <?php
     include('header.php');
@@ -25,7 +25,8 @@ try{
     die();
 }
 
-?>
+?>C:\xamppnew\htdocs\git php\Php\users.php
+C:\xamppnew\htdocs\git php\updateannonce.php
 
     <div class="p-4 sm:ml-64">
         <div class="p-4   rounded-lg  mt-14">
